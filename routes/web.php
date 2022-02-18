@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\AdminProfileController;
 use App\Http\Controllers\backend\BrandController;
+use App\Http\Controllers\backend\CategoryController;
 
 use App\Http\Controllers\frontend\IndexController;
 
@@ -71,6 +72,23 @@ Route::prefix('brand')->group(function(){
   Route::post('/update',[BrandController::class, 'BrandUpdate'])->name('brand.update');
 
   Route::get('/delete/{id}',[BrandController::class, 'BrandDelete'])->name('brand.delete');
+
+});
+
+
+/***************************Admin Category Routes******************************************/
+
+Route::prefix('category')->group(function(){
+
+  Route::get('/view',[CategoryController::class, 'CategoryView'])->name('all.category');
+
+  Route::post('/store',[CategoryController::class, 'CategoryStore'])->name('category.store');
+
+  Route::get('/edit/{id}',[CategoryController::class, 'CategoryEdit'])->name('category.edit');
+
+  Route::post('/update',[CategoryController::class, 'CategoryUpdate'])->name('category.update');
+
+  Route::get('/delete/{id}',[CategoryController::class, 'CategoryDelete'])->name('category.delete');
 
 });
 

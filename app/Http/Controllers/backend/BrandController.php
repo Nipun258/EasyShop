@@ -122,7 +122,7 @@ class BrandController extends Controller
 
         $notification = array(
            'message' => 'Brand deleted Successfully',
-           'alert-type' => 'info'
+           'alert-type' => 'danger'
         );
 
         return redirect()->route('all.brand')->with($notification);
