@@ -23,7 +23,7 @@ $route = Route::current()->getName();
     <!-- sidebar menu-->
     <ul class="sidebar-menu" data-widget="tree">
       
-      <li>
+      <li class=" {{ ($route == 'dashboard1')?'active':'' }}">
         <a href="{{ route('dashboard1')}}">
           <i data-feather="pie-chart"></i>
           <span>Dashboard</span>
@@ -38,11 +38,23 @@ $route = Route::current()->getName();
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{ route('admin.profile.view') }}"><i class="ti-more"></i>Your Profile</a></li>
+          <li class=" {{ ($route == 'admin.profile.view')?'active':'' }}"><a href="{{ route('admin.profile.view') }}"><i class="ti-more"></i>Your Profile</a></li>
+          <li class ="{{ ($route == 'admin.password.view')?'active':'' }}"><a href="{{ route('admin.password.view') }}"><i class="ti-more"></i>Change Password</a></li>
+        </ul>
+      </li>
+
+      <li class="treeview  {{ ($prefix == '/brand')?'active':'' }}">
+        <a href="#">
+          <i data-feather="bookmark"></i> <span>Brands</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-right pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li  class ="{{ ($route == 'all.brand')?'active':'' }}"><a href="{{ route('all.brand')}}"><i class="ti-more"></i>All Brand</a></li>
           <li><a href="{{ route('admin.password.view') }}"><i class="ti-more"></i>Change Password</a></li>
         </ul>
       </li>
-      
       <li class="treeview">
         <a href="#">
           <i data-feather="mail"></i> <span>Mailbox</span>
