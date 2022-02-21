@@ -27,7 +27,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Category List</h3>
+				  <h3 class="box-title">SubCategory List</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -35,21 +35,21 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<td>Category Icon</td>
-								<td>Category En</td>
-								<td>Category Sin</td>
+								<td>Category</td>
+								<td>SubCategory En</td>
+								<td>SubCategory Sin</td>
 								<td>Action</td>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($categories as $category)
+							@foreach($subcategories as $subcategory)
 							<tr>
-								<td><span><i class="{{ $category->category_icon}}"></i></span></td>
-								<td>{{$category->category_name_en}}</td>
-								<td>{{$category->category_name_sin}}</td>
+								<td>{{$subcategory['category']['category_name_en']}}</td>
+								<td>{{$subcategory->subcategory_name_en}}</td>
+								<td>{{$subcategory->subcategory_name_sin}}</td>
 								<td width="30%">
-									<a href="{{ route('category.edit',$category->id)}}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
-									<a href="{{ route('category.delete',$category->id)}}" class="btn btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i></a>
+									<a href="{{ route('subcategory.edit',$subcategory->id)}}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i></a>
+									<a href="{{ route('subcategory.delete',$subcategory->id)}}" class="btn btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i></a>
 								</td>
 							</tr>
 							@endforeach
@@ -65,39 +65,41 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Add New Category </h3>
+				  <h3 class="box-title">Add New SubCategory </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
-<form method="post" action="{{ route('category.store') }}" enctype="multipart/form-data">
+<form method="post" action="{{ route('subcategory.store') }}" >
 	@csrf
 	<div class="row">
 		<div class="col-12">
 			<div class="form-group">
-				<h5>Category Name English <span class="text-danger">*</span></h5>
+				<h5>Category Name <span class="text-danger">*</span></h5>
+				<select class="custom-select form-control" name="category_id" id="category_id">
+					<option value="" selected="" disabled="">Select Category Name</option>
+				   @foreach($categories as $category)
+						<option value="{{ $category->id }}">{{ $category->category_name_en }}</option>
+				    @endforeach
+				</select>
+				@error('category_id')
+					<span class="text-danger">{{ $message }}</span>
+				@enderror
+			</div>
+			<div class="form-group">
+				<h5>SubCategory Name English <span class="text-danger">*</span></h5>
 				<div class="controls">
-					<input type="text" name="category_name_en" id="category_name_en" class="form-control" >
-					@error('category_name_en')
+					<input type="text" name="subcategory_name_en" id="subcategory_name_en" class="form-control" >
+					@error('subcategory_name_en')
 					<span class="text-danger">{{ $message }}</span>
 					@enderror
 				</div>
 				
 			</div>
 			<div class="form-group">
-				<h5>Category Name Sinhala <span class="text-danger">*</span></h5>
+				<h5>SubCategory Name Sinhala <span class="text-danger">*</span></h5>
 				<div class="controls">
-					<input type="text" name="category_name_sin" id="category_name_sin" class="form-control"  >
-					@error('category_name_sin')
-					<span class="text-danger">{{ $message }}</span>
-					@enderror
-				</div>
-				
-			</div>
-			<div class="form-group">
-				<h5>Category Icon<span class="text-danger">*</span></h5>
-				<div class="controls">
-					<input type="text" name="category_icon" id="category_icon" class="form-control" >
-					@error('category_icon')
+					<input type="text" name="subcategory_name_sin" id="subcategory_name_sin" class="form-control"  >
+					@error('subcategory_name_sin')
 					<span class="text-danger">{{ $message }}</span>
 					@enderror
 				</div>
