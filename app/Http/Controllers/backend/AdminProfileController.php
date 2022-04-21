@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Auth;
 
 class AdminProfileController extends Controller
-{
+{   
     public function ProfileView()
     {
         $adminData = Admin::find(1);

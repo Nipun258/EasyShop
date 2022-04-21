@@ -8,6 +8,7 @@ use App\Http\Controllers\backend\BrandController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\SubCategoryController;
 use App\Http\Controllers\backend\SubSubCategoryController;
+use App\Http\Controllers\backend\ProductController;
 
 use App\Http\Controllers\frontend\IndexController;
 
@@ -110,6 +111,8 @@ Route::prefix('category')->group(function(){
 
   Route::get('/subcategory/ajax/{category_id}',[SubSubCategoryController::class, 'SubCategoryLoad']);
 
+  Route::get('/sub-subcategory/ajax/{subcategory_id}',[SubSubCategoryController::class, 'SubSubCategoryLoad']);
+
   Route::post('/sub/sub/store',[SubSubCategoryController::class, 'SubSubCategoryStore'])->name('subsubcategory.store');
 
   Route::get('/sub/sub/edit/{id}',[SubSubCategoryController::class, 'SubSubCategoryEdit'])->name('subsubcategory.edit');
@@ -117,6 +120,24 @@ Route::prefix('category')->group(function(){
   Route::post('/sub/sub/update',[SubSubCategoryController::class, 'SubSubCategoryUpdate'])->name('subsubcategory.update');
 
   Route::get('/sub/sub/delete/{id}',[SubSubCategoryController::class, 'SubSubCategoryDelete'])->name('subsubcategory.delete');
+
+});
+
+/***************************Admin Products All Routes******************************************/
+
+Route::prefix('product')->group(function(){
+
+  Route::get('/add',[ProductController::class, 'ProductAdd'])->name('product.add');
+
+  Route::post('/store',[ProductController::class, 'ProductStore'])->name('product.store');
+
+  Route::get('/manage',[ProductController::class, 'ManageProduct'])->name('manage.product');
+
+  Route::get('/edit/{id}',[ProductController::class, 'ProductEdit'])->name('product.edit');
+
+  Route::post('/update',[ProductController::class, 'ProductUpdate'])->name('product.update');
+
+  Route::get('/delete/{id}',[ProductController::class, 'ProductDelete'])->name('product.delete');
 
 });
 
