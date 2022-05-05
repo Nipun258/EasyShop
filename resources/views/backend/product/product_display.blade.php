@@ -13,7 +13,7 @@
 		 <!-- Basic Forms -->
 		  <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Edit Product </h4>
+			  <h4 class="box-title"> Product Summary View </h4>
 
 			</div>
 			<!-- /.box-header -->
@@ -21,8 +21,6 @@
 			  <div class="row">
 				<div class="col">
 
-  <form method="post" action="{{ route('product.update') }}" >
-		 	@csrf
     <input type="hidden" name="id" value="{{ $products->id }}">
 					  <div class="row">
 	<div class="col-12">	
@@ -32,17 +30,14 @@
 			<div class="col-md-4">
 
 	 <div class="form-group">
-	<h5>Brand Select <span class="text-danger">*</span></h5>
+	<h5 class="text-white">Brand Name</h5>
 	<div class="controls">
-		<select name="brand_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Select Brand</option>
+		<select name="brand_id" class="form-control" required="" disabled>
+			<option value="" selected="" disabled="">Brand Select</option>
 			@foreach($brands as $brand)
  <option value="{{ $brand->id }}" {{ $brand->id == $products->brand_id ? 'selected': '' }} >{{ $brand->brand_name_en }}</option>	
 			@endforeach
-		</select>
-		@error('brand_id') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
+		</select> 
 	 </div>
 		 </div>
 
@@ -51,17 +46,14 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-	<h5>Category Select <span class="text-danger">*</span></h5>
+	<h5 class="text-white">Category Name </h5>
 	<div class="controls">
-		<select name="category_id" class="form-control" required="" >
+		<select name="category_id" class="form-control" required="" disabled>
 			<option value="" selected="" disabled="">Select Category</option>
 			@foreach($categories as $category)
  <option value="{{ $category->id }}" {{ $category->id == $products->category_id ? 'selected': '' }} >{{ $category->category_name_en }}</option>	
 			@endforeach
-		</select>
-		@error('category_id') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
+		</select> 
 	 </div>
 		 </div>
 
@@ -71,9 +63,9 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-	<h5>SubCategory Select <span class="text-danger">*</span></h5>
+	<h5 class="text-white">SubCategory Name</h5>
 	<div class="controls">
-		<select name="subcategory_id" class="form-control" required="" >
+		<select name="subcategory_id" class="form-control" required=""  disabled>
 			<option value="" selected="" disabled="">Select SubCategory</option>
 
 			 @foreach($subcategory as $sub)
@@ -81,9 +73,6 @@
 			@endforeach
 
 		</select>
-		@error('subcategory_id') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
 	 </div>
 		 </div>
 
@@ -97,9 +86,9 @@
 			<div class="col-md-4">
 
 	 <div class="form-group">
-	<h5>SubSubCategory Select <span class="text-danger">*</span></h5>
+	<h5 class="text-white">SubSubCategory Name</h5>
 	<div class="controls">
-		<select name="subsubcategory_id" class="form-control" required="" >
+		<select name="subsubcategory_id" class="form-control" required="" disabled>
 			<option value="" selected="" disabled="">Select SubSubCategory</option>
 
 		 @foreach($subsubcategory as $subsub)
@@ -107,9 +96,6 @@
 			@endforeach
 
 		</select>
-		@error('subsubcategory_id') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
 	 </div>
 		 </div>
 
@@ -118,12 +104,9 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Product Name En <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Product Name English</h5>
 			<div class="controls">
-				<input type="text" name="product_name_en" class="form-control" value="{{ $products->product_name_en}}" required="">
-     @error('product_name_en') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
+				<input type="text" name="product_name_en" class="form-control" value="{{ $products->product_name_en}}" disabled>
 	 	  </div>
 		</div>
 
@@ -133,12 +116,9 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Product Name Sin <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Product Name Sinhala</h5>
 			<div class="controls">
-				<input type="text" name="product_name_sin" class="form-control" value="{{ $products->product_name_sin}}"required="">
-     @error('product_name_sin') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
+				<input type="text" name="product_name_sin" class="form-control" value="{{ $products->product_name_sin}}" disabled>
 	 		 </div>
 		</div>
 
@@ -152,12 +132,9 @@
 			<div class="col-md-4">
 
 	  <div class="form-group">
-			<h5>Product Code <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Product Code </h5>
 			<div class="controls">
-				<input type="text" name="product_code" class="form-control" value="{{ $products->product_code }}" required="">
-     @error('product_code') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
+				<input type="text" name="product_code" class="form-control" value="{{ $products->product_code }}" disabled>
 	 	  </div>
 		</div>
 
@@ -166,12 +143,9 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Product Quantity <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Product Quantity</h5>
 			<div class="controls">
-				<input type="text" name="product_qty" class="form-control" value="{{ $products->product_qty }}" required="">
-     @error('product_qty') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
+				<input type="text" name="product_qty" class="form-control" value="{{ $products->product_qty }}" disabled>
 	 	  </div>
 		</div>
 
@@ -181,12 +155,9 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Product Tags En <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Product Tags List</h5>
 			<div class="controls">
-	 <input type="text" name="product_tags_en" class="form-control" value="{{ $products->product_tags_en }}" data-role="tagsinput" required="">
-     @error('product_tags_en') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
+	 <input type="text" name="product_tags_en" class="form-control" value="{{ $products->product_tags_en }}" data-role="tagsinput" disabled>
 	 		 </div>
 		</div>
 
@@ -203,12 +174,9 @@
 			<div class="col-md-4">
 
 	    <div class="form-group">
-			<h5>Product Tags Sin <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Product Tags List(S)</h5>
 			<div class="controls">
-	 <input type="text" name="product_tags_sin" class="form-control" value="{{ $products->product_tags_sin }}" data-role="tagsinput" required="">
-     @error('product_tags_sin') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
+	 <input type="text" name="product_tags_sin" class="form-control" value="{{ $products->product_tags_sin }}" data-role="tagsinput" disabled>
 	 		 </div>
 		</div>
 
@@ -217,12 +185,9 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Product Size En <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Product Size List </h5>
 			<div class="controls">
-	 <input type="text" name="product_size_en" class="form-control"  value="{{ $products->product_size_en }}" data-role="tagsinput" required="">
-     @error('product_size_en') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
+	 <input type="text" name="product_size_en" class="form-control"  value="{{ $products->product_size_en }}" data-role="tagsinput" disabled>
 	 		 </div>
 		</div>
 
@@ -232,12 +197,9 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Product Size Sin <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Product Size List(S) </h5>
 			<div class="controls">
-	 <input type="text" name="product_size_sin" class="form-control" value="{{ $products->product_size_sin }}" data-role="tagsinput" required="">
-     @error('product_size_sin') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
+	 <input type="text" name="product_size_sin" class="form-control" value="{{ $products->product_size_sin }}" data-role="tagsinput" disabled>
 	 		 </div>
 		</div>
 
@@ -251,12 +213,9 @@
 			<div class="col-md-4">
 
 	    <div class="form-group">
-			<h5>Product Color En <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Product Color List </h5>
 			<div class="controls">
-	 <input type="text" name="product_color_en" class="form-control" value="{{ $products->product_color_en }}" data-role="tagsinput" required="">
-     @error('product_color_en') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
+	 <input type="text" name="product_color_en" class="form-control" value="{{ $products->product_color_en }}" data-role="tagsinput" disabled>
 	 		 </div>
 		</div>
 
@@ -265,12 +224,9 @@
 			<div class="col-md-4">
 
 				 <div class="form-group">
-			<h5>Product Color Sin <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Product Color Sin </h5>
 			<div class="controls">
-	 <input type="text" name="product_color_sin" class="form-control" value="{{ $products->product_color_sin }}" data-role="tagsinput" required="">
-     @error('product_color_sin') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
+	 <input type="text" name="product_color_sin" class="form-control" value="{{ $products->product_color_sin }}" data-role="tagsinput" disabled>
 	 		 </div>
 		</div>
 
@@ -280,12 +236,9 @@
 			<div class="col-md-4">
 
 				<div class="form-group">
-			<h5>Product Selling Price <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Product Selling Price </h5>
 			<div class="controls">
-				<input type="text" name="selling_price" class="form-control" value="{{ $products->selling_price }}" required="">
-     @error('selling_price') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
+				<input type="text" name="selling_price" class="form-control" value="Rs.{{ number_format($products->selling_price , 2)}}" disabled>
 	 	  </div>
 		</div>
 
@@ -300,12 +253,9 @@
 			<div class="col-md-6">
 
 	    <div class="form-group">
-			<h5>Product Discount Price <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Product Discount Price </h5>
 			<div class="controls">
-	 <input type="text" name="discount_price" class="form-control"  value="{{ $products->discount_price }}" required="">
-     @error('discount_price') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
+	 <input type="text" name="discount_price" class="form-control"  value="Rs.{{ number_format($products->discount_price , 2)}}" disabled>
 	 		 </div>
 		</div>
 
@@ -313,34 +263,11 @@
 
 			<div class="col-md-4">
 
-<!-- 	    <div class="form-group">
-			<h5>Main Thambnail <span class="text-danger">*</span></h5>
-			<div class="controls">
-	 <input type="file" name="product_thambnail" class="form-control" onChange="mainThamUrl(this)" required="" >
-     @error('product_thambnail') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
-	 <img src="" id="mainThmb">
-	 		 </div>
-		</div> -->
-
 
 			</div> <!-- end col md 4 -->
 
 
 			<div class="col-md-4">
-
-<!-- 	    <div class="form-group">
-			<h5>Multiple Image <span class="text-danger">*</span></h5>
-			<div class="controls">
-	 <input type="file" name="multi_img[]" class="form-control" multiple="" id="multiImg" required="" >
-     @error('multi_img') 
-	 <span class="text-danger">{{ $message }}</span>
-	 @enderror
-	 <div class="row" id="preview_img"></div>
-
-	 		 </div>
-		</div> -->
 
 
 			</div> <!-- end col md 4 -->
@@ -355,9 +282,9 @@
 			<div class="col-md-6">
 
 	    <div class="form-group">
-			<h5>Short Description English <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Short Description English </h5>
 			<div class="controls">
-	<textarea name="short_descp_en" id="textarea" class="form-control" required placeholder="Textarea text">{!! $products->short_descp_en !!}</textarea>     
+	<textarea name="short_descp_en" id="textarea" class="form-control"  disabled>{!! $products->short_descp_en !!}</textarea>     
 	 		 </div>
 		</div>
 
@@ -366,9 +293,9 @@
 			<div class="col-md-6">
 
 	     <div class="form-group">
-			<h5>Short Description Sinhala <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Short Description Sinhala</h5>
 			<div class="controls">
-	<textarea name="short_descp_sin" id="textarea" class="form-control" required placeholder="Textarea text">{!! $products->short_descp_sin !!}</textarea>     
+	<textarea name="short_descp_sin" id="textarea" class="form-control" disabled>{!! $products->short_descp_sin !!}</textarea>     
 	 		 </div>
 		</div>
 
@@ -385,9 +312,9 @@
 			<div class="col-md-6">
 
 	    <div class="form-group">
-			<h5>Long Description English <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Long Description English </h5>
 			<div class="controls">
-	<textarea id="editor1" name="long_descp_en" rows="10" cols="80" required="">
+	<textarea id="editor1" name="long_descp_en" rows="10" cols="80" disabled>
 		{!! $products->long_descp_en !!}
 						</textarea>  
 	 		 </div>
@@ -398,9 +325,9 @@
 			<div class="col-md-6">
 
 	     <div class="form-group">
-			<h5>Long Description Sinhala <span class="text-danger">*</span></h5>
+			<h5 class="text-white">Long Description Sinhala</h5>
 			<div class="controls">
-	<textarea id="editor2" name="long_descp_sin" rows="10" cols="80">
+	<textarea id="editor2" name="long_descp_sin" rows="10" cols="80" disabled>
 		{!! $products->long_descp_sin !!}
 						</textarea>       
 	 		 </div>
@@ -423,12 +350,12 @@
 
 		<div class="controls">
 			<fieldset>
-				<input type="checkbox" id="checkbox_2" name="hot_deals" value="1" {{ $products->hot_deals == 1 ? 'checked': '' }}>
-				<label for="checkbox_2">Hot Deals</label>
+				<input type="checkbox" id="checkbox_2" name="hot_deals" value="1" {{ $products->hot_deals == 1 ? 'checked': '' }} disabled >
+				<label for="checkbox_2" class="text-white">Hot Deals</label>
 			</fieldset>
 			<fieldset>
-				<input type="checkbox" id="checkbox_3" name="featured" value="1" {{ $products->featured == 1 ? 'checked': '' }}>
-				<label for="checkbox_3">Featured</label>
+				<input type="checkbox" id="checkbox_3" name="featured" value="1" {{ $products->featured == 1 ? 'checked': '' }} disabled>
+				<label for="checkbox_3" class="text-white">Featured</label>
 			</fieldset>
 		</div>
 	</div>
@@ -441,22 +368,18 @@
 
 		<div class="controls">
 			<fieldset>
-				<input type="checkbox" id="checkbox_4" name="special_offer" value="1" {{ $products->special_offer == 1 ? 'checked': '' }}>
-				<label for="checkbox_4">Special Offer</label>
+				<input type="checkbox" id="checkbox_4" name="special_offer" value="1" {{ $products->special_offer == 1 ? 'checked': '' }} disabled>
+				<label for="checkbox_4" class="text-white">Special Offer</label>
 			</fieldset>
 			<fieldset>
-				<input type="checkbox" id="checkbox_5" name="special_deals" value="1" {{ $products->special_deals == 1 ? 'checked': '' }}>
-				<label for="checkbox_5">Special Deals</label>
+				<input type="checkbox" id="checkbox_5" name="special_deals" value="1" {{ $products->special_deals == 1 ? 'checked': '' }} disabled>
+				<label for="checkbox_5" class="text-white">Special Deals</label>
 			</fieldset>
 		</div>
 			</div>
 		</div>
 						</div>
 
-						<div class="text-xs-right">
-<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
-						</div>
-					</form>
 
 				</div>
 				<!-- /.col -->
@@ -477,35 +400,24 @@
 		<div class="col-md-12">
 			<div class="box bt-3 border-info">
 				<div class="box-header">
-					<h4 class="box-title">Product Multiple Image <strong>Update</strong></h4>
+					<h4 class="box-title">Product Multiple Image List </h4>
 				</div>
-				<form method="post" action="{{ route('update.product.image') }}" enctype="multipart/form-data">
-				@csrf
+				
 					<div class="row row-sm container">
 						@foreach($multiImgs as $img)
 						<div class="col-md-3">
-							<div class="card">
-								<img src="{{ asset($img->photo_name) }}" class="card-img-top" style="height: 130px; width: 280px;">
-								<div class="card-body">
-									<h5 class="card-title">
-									<a href="{{ route('product.multiimg.delete',$img->id) }}" class="btn btn-sm btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i> </a>
-									</h5>
-									<p class="card-text">
-										<div class="form-group">
-											<label class="form-control-label">Change Image <span class="tx-danger">*</span></label>
-											<input class="form-control" type="file" name="multi_img[{{ $img->id }}]">
-										</div>
-									</p>
+							<div class="card border border-10">
+								<img src="{{ asset($img->photo_name) }}" class="card-img-top" style="height: 250px; width: 400px;">
+								<div class="card-body center">
+									<a href="" class="btn btn-primary">+</a>
 								</div>
 							</div>
 							</div><!--  end col md 3		 -->
 							@endforeach
 						</div>
-						<div class="text-xs-right container">
-							<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image">
-						</div>
+
 						<br><br>
-					</form>
+
 				</div>
 			</div>
 			</div> <!-- // end row  -->
@@ -517,33 +429,21 @@
 		<div class="col-md-12">
 			<div class="box bt-3 border-info">
 				<div class="box-header">
-					<h4 class="box-title">Product Thambnail Image <strong>Update</strong></h4>
+					<h4 class="box-title">Product Thambnail Image </h4>
 				</div>
-				<form method="post" action="{{ route('update.product.thambnail') }}" enctype="multipart/form-data">
-					@csrf
 					<input type="hidden" name="id" value="{{ $products->id }}">
 					<input type="hidden" name="old_img" value="{{ $products->product_thambnail }}">
 					<div class="row row-sm container">
 						<div class="col-md-3">
-							<div class="card">
-								<img src="{{ asset($products->product_thambnail) }}" class="card-img-top" style="height: 130px; width: 280px;">
+							<div class="card border border-10">
+								<img src="{{ asset($products->product_thambnail) }}" class="card-img-top" style="height: 250px; width: 400px;">
 								<div class="card-body">
-									<p class="card-text">
-										<div class="form-group">
-											<label class="form-control-label">Change Image <span class="tx-danger">*</span></label>
-											<input type="file" name="product_thambnail" class="form-control" onChange="mainThamUrl(this)"  >
-											<img src="" id="mainThmb">
-										</div>
-									</p>
+						
 								</div>
 							</div>
 							</div><!--  end col md 3		 -->
 						</div>
-						<div class="text-xs-right container">
-							<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image">
-						</div>
 						<br><br>
-					</form>
 				</div>
 			</div>
 		</div>
