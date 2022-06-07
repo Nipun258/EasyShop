@@ -103,7 +103,7 @@ class BrandController extends Controller
 
 
          $notification = array(
-           'message' => 'Brand Data Update Successfully',
+           'message' => 'Brand Data Update Without image Successfully',
            'alert-type' => 'info'
         );
 
@@ -127,4 +127,5 @@ class BrandController extends Controller
 
         return redirect()->route('all.brand')->with($notification);
      }
+
 }

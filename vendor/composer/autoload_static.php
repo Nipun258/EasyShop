@@ -617,6 +617,7 @@ class ComposerStaticInitaae69780ef35d5265697937522d96be4
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\MultiImg' => __DIR__ . '/../..' . '/app/Models/MultiImg.php',
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
+        'App\\Models\\Slider' => __DIR__ . '/../..' . '/app/Models/Slider.php',
         'App\\Models\\SubCategory' => __DIR__ . '/../..' . '/app/Models/SubCategory.php',
         'App\\Models\\SubSubCategory' => __DIR__ . '/../..' . '/app/Models/SubSubCategory.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

@@ -294,9 +294,10 @@ class ProductController extends Controller
         $products = Product::findOrFail($id);
         return view('backend.product.product_display',compact('categories','brands','subcategory','subsubcategory','products','multiImgs'));
 
-    }//end method
+    }//end method in php
   
   public function ProductDelete($id){
+    
         $product = Product::findOrFail($id);
         unlink($product->product_thambnail);
         Product::findOrFail($id)->delete();

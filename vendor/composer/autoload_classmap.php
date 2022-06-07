@@ -41,6 +41,7 @@ return array(
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
     'App\\Models\\MultiImg' => $baseDir . '/app/Models/MultiImg.php',
     'App\\Models\\Product' => $baseDir . '/app/Models/Product.php',
+    'App\\Models\\Slider' => $baseDir . '/app/Models/Slider.php',
     'App\\Models\\SubCategory' => $baseDir . '/app/Models/SubCategory.php',
     'App\\Models\\SubSubCategory' => $baseDir . '/app/Models/SubSubCategory.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

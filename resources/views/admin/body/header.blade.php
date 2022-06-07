@@ -20,8 +20,8 @@
 					</a>
 				</li>
 				<li class="btn-group nav-item d-none d-xl-inline-block">
-					<a href="calendar.html" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
-						<i class="ti-calendar"></i>
+					<a href="{{ route('home')}}" class="waves-effect waves-light nav-link rounded svg-bt-icon" target="_blank">
+						<i class="ti-desktop"></i>
 					</a>
 				</li>
 			</ul>
