@@ -35,12 +35,11 @@ Route::group(['prefix'=> 'admin', 'middleware'=>['admin:admin']], function(){
 	Route::post('/login',[AdminController::class, 'store'])->name('admin.login');
 });
 
-
-
+Route::middleware(['auth:admin'])->group(function(){
 
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
     return view('admin.index');
-})->name('dashboard');
+})->name('dashboard')->middleware('auth:admin');
 
  /*****************************Admin Related All Route*************************/
 
@@ -61,7 +60,10 @@ Route::prefix('profile')->group(function(){
 
     Route::post('/password/update',[AdminProfileController::class, 'PasswordUpdate'])->name('admin.password.update');
 
-});
+});//end of the profile controller group
+
+
+});//end of the middleware
 
 /*****************************User Related All Route List*************************/
 
@@ -84,7 +86,11 @@ Route::get('/user/change/password',[IndexController::class,'UserChangePassword']
 
 Route::post('user/password/update',[IndexController::class, 'UserPasswordUpdate'])->name('user.password.change');
 
+/******************************************************************************************/
+
 /***************************Admin Brand All Routes******************************************/
+
+Route::middleware(['auth:admin'])->group(function(){
 
 Route::prefix('brand')->group(function(){
 
@@ -98,7 +104,7 @@ Route::prefix('brand')->group(function(){
 
   Route::get('/delete/{id}',[BrandController::class, 'BrandDelete'])->name('brand.delete');
 
-});
+});//end of the brand controller group
 
 
 /***************************Admin Category Routes******************************************/
@@ -143,7 +149,7 @@ Route::prefix('category')->group(function(){
 
   Route::get('/sub/sub/delete/{id}',[SubSubCategoryController::class, 'SubSubCategoryDelete'])->name('subsubcategory.delete');
 
-});
+});//end of the catagory controller group
 
 /***************************Admin Products All Routes******************************************/
 
@@ -173,7 +179,7 @@ Route::prefix('product')->group(function(){
 
   Route::get('/delete/{id}',[ProductController::class, 'ProductDelete'])->name('product.delete');
 
-});
+});//end of the product controller group
 
 
 /***************************Admin Slider All Routes******************************************/
@@ -194,8 +200,10 @@ Route::prefix('slider')->group(function(){
 
   Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
 
-});
+});//end of the slider controller group
 
+
+});//end of the admin middleware check
 
 
 
