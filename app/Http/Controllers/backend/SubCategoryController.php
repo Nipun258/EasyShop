@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SubCategory;
+use App\Models\SubSubCategory;
 use App\Models\Category;
 use Image;
 use Carbon\Carbon;
@@ -87,6 +88,8 @@ class SubCategoryController extends Controller
      public function SubCategoryDelete($id){
 
         $subcategory = SubCategory::findorFail($id);
+
+        $subsubcategory = SubSubCategory::where("subcategory_id","=",$subcategory->id)->delete();
 
         SubCategory::findorFail($id)->delete();
 

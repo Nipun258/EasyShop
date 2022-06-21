@@ -5,8 +5,11 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\SubCategory;
+use App\Models\SubSubCategory;
 use Image;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -80,6 +83,10 @@ class CategoryController extends Controller
      public function CategoryDelete($id){
 
         $category = Category::findorFail($id);
+
+        $subcategory = SubCategory::where("category_id","=",$category->id)->delete();
+
+        $subsubcategory = SubSubCategory::where("category_id","=",$category->id)->delete();
 
         Category::findorFail($id)->delete();
 

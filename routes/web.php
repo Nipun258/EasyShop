@@ -12,6 +12,7 @@ use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\SliderController;
 
 use App\Http\Controllers\frontend\IndexController;
+use App\Http\Controllers\frontend\LanguageController;
 
 
 
@@ -205,6 +206,15 @@ Route::prefix('slider')->group(function(){
 
 });//end of the admin middleware check
 
+
+/*****************frontend all Route****************************************/
+
+/*****************Multi Language All Route***********************************/
+
+
+Route::get('/language/english', [LanguageController::class, 'EnglishLan'])->name('english.language');
+
+Route::get('/language/sinhala', [LanguageController::class, 'SinhalaLan'])->name('sinhala.language');
 
 
 
