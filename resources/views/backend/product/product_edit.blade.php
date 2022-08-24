@@ -300,9 +300,9 @@
 			<div class="col-md-6">
 
 	    <div class="form-group">
-			<h5>Product Discount Price <span class="text-danger">*</span></h5>
+			<h5>Product Discount Price </h5>
 			<div class="controls">
-	 <input type="text" name="discount_price" class="form-control"  value="{{ $products->discount_price }}" required="">
+	 <input type="text" name="discount_price" class="form-control"  value="{{ $products->discount_price }}">
      @error('discount_price') 
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror
@@ -494,6 +494,9 @@
 										<div class="form-group">
 											<label class="form-control-label">Change Image <span class="tx-danger">*</span></label>
 											<input class="form-control" type="file" name="multi_img[{{ $img->id }}]">
+											 @error('multi_img') 
+	                                  <span class="text-danger">{{ $message }}</span>
+	                                         @enderror
 										</div>
 									</p>
 								</div>
@@ -532,6 +535,9 @@
 										<div class="form-group">
 											<label class="form-control-label">Change Image <span class="tx-danger">*</span></label>
 											<input type="file" name="product_thambnail" class="form-control" onChange="mainThamUrl(this)"  >
+											@error('product_thambnail') 
+	                                            <span class="text-danger">{{ $message }}</span>
+	                                         @enderror
 											<img src="" id="mainThmb">
 										</div>
 									</p>

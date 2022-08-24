@@ -192,6 +192,13 @@ class ProductController extends Controller
     } // end method
 
     public function MultiImageUpdate(Request $request){
+
+        $validatedData = $request->validate([
+            
+            'multi_img' => 'required',
+
+        ]);
+
         $imgs = $request->multi_img;
 
         foreach ($imgs as $id => $img) {
@@ -220,6 +227,13 @@ class ProductController extends Controller
     } // end mehtod  
 
     public function ThambnailImageUpdate(Request $request){
+
+    $validatedData = $request->validate([
+            
+       'multi_img' => 'required',
+
+    ]);
+    
     $pro_id = $request->id;
     $oldImage = $request->old_img;
     unlink($oldImage);

@@ -217,4 +217,9 @@ Route::get('/language/english', [LanguageController::class, 'EnglishLan'])->name
 Route::get('/language/sinhala', [LanguageController::class, 'SinhalaLan'])->name('sinhala.language');
 
 
+/***************Product Detials Page url**************************************/
+
+Route::get('/product/details/{id}/{slug}', [IndexController::class, 'ProductDetails']);
+
+
 
